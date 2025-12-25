@@ -16,15 +16,6 @@ public class CreateAddressHandler : IRequestHandler<CreateAddressCommand, Result
 
     public async Task<Result<AddressResponse>> Handle(CreateAddressCommand request, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrWhiteSpace(request.Street) ||
-            string.IsNullOrWhiteSpace(request.City) ||
-            string.IsNullOrWhiteSpace(request.State) ||
-            string.IsNullOrWhiteSpace(request.Country))
-        {
-            return Result<AddressResponse>.Failure(
-                Error.Validation("Address.ValidationFailed", "Required fields cannot be empty"));
-        }
-
         var address = new Address
         {
             Id = Guid.NewGuid(),

@@ -16,15 +16,6 @@ public class UpdateAddressHandler : IRequestHandler<UpdateAddressCommand, Result
 
     public async Task<Result<AddressResponse>> Handle(UpdateAddressCommand request, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrWhiteSpace(request.Street) || 
-            string.IsNullOrWhiteSpace(request.City) || 
-            string.IsNullOrWhiteSpace(request.State) ||
-            string.IsNullOrWhiteSpace(request.Country))
-        {
-            return Result<AddressResponse>.Failure(
-                Error.Validation("Address.ValidationFailed", "Required fields cannot be empty"));
-        }
-
         var address = await _context.Addresses
             .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
 
