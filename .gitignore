@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/VerticalSlice/.vs
+/.vs
+/VerticalSlice/VerticalSlice.Api/bin/Debug/net10.0
+/VerticalSlice/VerticalSlice.Api/obj
